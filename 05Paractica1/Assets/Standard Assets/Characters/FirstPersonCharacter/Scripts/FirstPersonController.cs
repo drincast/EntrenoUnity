@@ -231,6 +231,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
             }
+
+            if (Input.GetKey(KeyCode.Q))
+            {
+                Debug.Log("es la q");
+            }
         }
 
 

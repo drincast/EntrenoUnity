@@ -21,6 +21,8 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
                 SetEnabled("CROSS_PLATFORM_INPUT", true, false);
                 SetEnabled("MOBILE_INPUT", true, true);
             }
+
+           
         }
 
 

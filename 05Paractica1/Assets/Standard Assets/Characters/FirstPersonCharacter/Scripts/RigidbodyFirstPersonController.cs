@@ -16,6 +16,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public float StrafeSpeed = 4.0f;    // Speed when walking sideways
             public float RunMultiplier = 2.0f;   // Speed when sprinting
 	        public KeyCode RunKey = KeyCode.LeftShift;
+            public KeyCode QKey = KeyCode.Q;
             public float JumpForce = 30f;
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
@@ -31,7 +32,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				{
 					//strafe
 					CurrentTargetSpeed = StrafeSpeed;
-				}
+                }
 				if (input.y < 0)
 				{
 					//backwards
@@ -43,6 +44,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					//handled last as if strafing and moving forward at the same time forwards speed should take precedence
 					CurrentTargetSpeed = ForwardSpeed;
 				}
+
+                //if (Input.GetKey(QKey))
+                //{
+                //    Debug.Log("hola es la Q");
+                //}
+
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {

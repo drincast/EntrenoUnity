@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 1797701911
+    locked: 0
+  - name: Elementos01
+    uniqueID: 1295895493
+    locked: 0
+  - name: Elementos02
+    uniqueID: 1093187271
+    locked: 0
+  - name: mikka
+    uniqueID: 1638875621
+    locked: 0
+  - name: gato
+    uniqueID: 901745129
+    locked: 0

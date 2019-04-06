@@ -475,8 +475,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219647255}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9239444, w: 0.38252684}
-  m_LocalPosition: {x: 0.99, y: 1.53, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: -0.29015422, w: -0.95697993}
+  m_LocalPosition: {x: 1.8964521, y: 0.6155298, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1683,8 +1683,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870353764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.6, y: 2.85, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9415441, w: 0.33688986}
+  m_LocalPosition: {x: -8.743625, y: 5.524223, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3286,8 +3286,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1833174122}
   - component: {fileID: 1833174121}
+  - component: {fileID: 1833174123}
   m_Layer: 0
-  m_Name: hoja02 (2)
+  m_Name: hoja05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3349,12 +3350,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833174120}
   m_LocalRotation: {x: -0, y: -0, z: 0.80335075, w: -0.5955062}
-  m_LocalPosition: {x: 3.44, y: -0.84, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -106.90301}
+--- !u!95 &1833174123
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833174120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1a9e47bbac1c2134c96f15a8cd1d49d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1838568607
 GameObject:
   m_ObjectHideFlags: 0

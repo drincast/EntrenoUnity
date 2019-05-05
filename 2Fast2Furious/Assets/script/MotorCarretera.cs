@@ -18,6 +18,12 @@ public class MotorCarretera : MonoBehaviour
     public GameObject calleNueva;
 
     public float tamanioCalle; 
+    public Vector3 medidaLimitePantalla;
+    public bool salioDePantalla;
+
+    //referencia a camara
+    public GameObject mCamGo;
+    public Camera mCamComp;
 
 
     // Start is called before the first frame update
@@ -31,12 +37,21 @@ public class MotorCarretera : MonoBehaviour
     {
         if(this.inicioJuego && !this.finJuego){
             transform.Translate(Vector3.down * this.velocidad * Time.deltaTime);
+
+            if(((this.calleAnterior.transform.position.y + this.tamanioCalle) < this.medidaLimitePantalla.y)
+                && this.salioDePantalla == false){
+                    this.salioDePantalla = true;
+                    this.DestruirCalles();;
+                }
         }        
     }
 
     void InicioJuego(){
         this.goContenedorCalle = GameObject.Find("ContenedorCalle");
+        this.mCamGo = GameObject.Find("Main Camera");
+        this.mCamComp = mCamGo.GetComponent<Camera>();
         this.VelocidadMotorCarretera();
+        this.MedirPantalla();
         BuscoCalles();
     }
 
@@ -77,6 +92,8 @@ public class MotorCarretera : MonoBehaviour
         MedirCalle();
         this.calleNueva.transform.position = new Vector3(this.calleAnterior.transform.position.x, 
             this.calleAnterior.transform.position.y + this.tamanioCalle - (10), 0);
+
+        this.salioDePantalla = false;
     }
 
     void MedirCalle(){
@@ -95,4 +112,14 @@ public class MotorCarretera : MonoBehaviour
         this.velocidad = 5;
     }
 
+    void MedirPantalla(){
+        this.medidaLimitePantalla = new Vector3(0, this.mCamComp.ScreenToWorldPoint(new Vector3(0,0,0)).y - 0.5f, 0);
+    }
+
+    void DestruirCalles(){
+        Destroy(this.calleAnterior);
+        this.tamanioCalle = 0;
+        this.calleAnterior = null;
+        this.CrearCalles();
+    }
 }

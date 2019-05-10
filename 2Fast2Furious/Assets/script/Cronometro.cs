@@ -20,9 +20,9 @@ public class Cronometro : MonoBehaviour
         this.goMotorCarretera = GameObject.Find("MotorCarretera");
         this.scpMotorcarretera = this.goMotorCarretera.GetComponent<MotorCarretera>();
 
-        this.txtTiempo.text = "2:00";
+        this.txtTiempo.text = "0:00";
         this.txtDistacia.text = "0";
-        this.tiempo = 30;
+        this.tiempo = 10;
     }
 
     void CalcularTiempoDistacia()

@@ -22,7 +22,7 @@ public class Cronometro : MonoBehaviour
 
         this.txtTiempo.text = "0:00";
         this.txtDistacia.text = "0";
-        this.tiempo = 10;
+        this.tiempo = 15;
     }
 
     void CalcularTiempoDistacia()

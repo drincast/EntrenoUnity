@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ControladorJuego : MonoBehaviour
 {
-    public GameObject goNaveJugador;
+    public GameObject goNaveJugador;    
 
     void InicializarObjetos()
     {
@@ -23,7 +23,14 @@ public class ControladorJuego : MonoBehaviour
     {
         if(this.goNaveJugador != null)
         {
-            this.goNaveJugador.transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * Time.deltaTime);
+            Nave scpNave = this.goNaveJugador.GetComponent<Nave>();
+            //this.goNaveJugador.transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * Time.deltaTime);
+            scpNave.MoverNave(Input.GetAxis("Horizontal"));
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                scpNave.Disparar(this.goNaveJugador.transform.position);
+            }
         }
     }
 }

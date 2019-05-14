@@ -67,12 +67,12 @@ class Disparo
         this.CrearBalas(posicion);
     }
 
-    public GameObject[] ObtenerDisparo()
-    {
-        GameObject[] vec = { this.balaIzq, this.balaDer };
+    //public GameObject[] ObtenerDisparo()
+    //{
+    //    GameObject[] vec = { this.balaIzq, this.balaDer };
 
-        return vec;
-    }
+    //    return vec;
+    //}
 }
 
 public class Nave : MonoBehaviour
@@ -155,7 +155,12 @@ public class Nave : MonoBehaviour
 
 
 
-    private List<GameObject[]> lstGoDisparo = null;
+    private List<Disparo> lstDisparo = null;
+
+    public Nave()
+    {
+        this.lstDisparo = new List<Disparo>();
+    }
 
     public bool MoverNave(float movimiento)
     {
@@ -181,7 +186,7 @@ public class Nave : MonoBehaviour
 
         try
         {
-            this.CrearDisparo(posicion);
+            this.CrearDisparo(posicion);            
             res = true;
         }
         catch (System.Exception ex)
@@ -211,15 +216,15 @@ public class Nave : MonoBehaviour
         return this.lstGoDisparo;
     }
 
-    private bool CrearDisparo(Vector3 posicion)
+    private Disparo CrearDisparo(Vector3 posicion)
     {
-        bool res = false;
+        //bool res = false;
         Disparo disparo = null;
 
         try
         {
             disparo = new Disparo(posicion);
-            ObtenerLstGoDisparo().Add(disparo.ObtenerDisparo());
+            //this.lstDisparo.Add(disparo);
         }
         catch (System.Exception ex)
         {
@@ -227,6 +232,6 @@ public class Nave : MonoBehaviour
             throw;
         }
 
-        return res;
+        return disparo;
     }
 }

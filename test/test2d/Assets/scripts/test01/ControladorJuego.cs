@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ControladorJuego : MonoBehaviour
 {
-    public GameObject goNaveJugador;    
+    public GameObject goNaveJugador;
+    private Nave scpNave;
 
     void InicializarObjetos()
     {
         this.goNaveJugador = GameObject.Find("goNaveJugador");
+        this.scpNave = this.goNaveJugador.GetComponent<Nave>();
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,8 @@ public class ControladorJuego : MonoBehaviour
     {
         if(this.goNaveJugador != null)
         {
-            Nave scpNave = this.goNaveJugador.GetComponent<Nave>();
             //this.goNaveJugador.transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * Time.deltaTime);
-            scpNave.MoverNave(Input.GetAxis("Horizontal"));
+            this.scpNave.MoverNave(Input.GetAxis("Horizontal"));
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {

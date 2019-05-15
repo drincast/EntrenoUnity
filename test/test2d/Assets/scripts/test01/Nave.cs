@@ -198,23 +198,23 @@ public class Nave : MonoBehaviour
         return res;
     }
 
-    private List<GameObject[]> ObtenerLstGoDisparo()
-    {
-        try
-        {
-            if (this.lstGoDisparo == null)
-            {
-                this.lstGoDisparo = new List<GameObject[]>();
-            }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.Log(string.Format("Error en Nave: {0}", ex));
-            throw;
-        }
+    //private List<GameObject[]> ObtenerLstGoDisparo()
+    //{
+    //    try
+    //    {
+    //        if (this.lstGoDisparo == null)
+    //        {
+    //            this.lstGoDisparo = new List<GameObject[]>();
+    //        }
+    //    }
+    //    catch (System.Exception ex)
+    //    {
+    //        Debug.Log(string.Format("Error en Nave: {0}", ex));
+    //        throw;
+    //    }
 
-        return this.lstGoDisparo;
-    }
+    //    return this.lstGoDisparo;
+    //}
 
     private Disparo CrearDisparo(Vector3 posicion)
     {

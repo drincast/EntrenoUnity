@@ -14,32 +14,37 @@ public class Bala : MonoBehaviour
         //TODO: mejorar los numeros constantes, realizar algun tipo dede calculo para que se ajusten a cualquier tamaño
         this.goBala.transform.position = new Vector3(posicion.x, posicion.y, posicion.z);
 
-        this.Desplazar();
+        this.Desplazamiento();
     }
 
     public bool Desplazamiento()
     {
         bool res = false;
 
-        try
-        {
-            this.goBala.SetActive(true);
-            StartCoroutine("DesplazarBala");
-            res = true;
-        }
-        catch (System.Exception ex)
-        {
-            Debug.Log(string.Format("Error en Bala: {0}", ex));
-            throw;
-        }
+        this.goBala.SetActive(true);
+        StartCoroutine("DesplazarBala");
+        res = true;
+
+        //try
+        //{
+        //    this.goBala.SetActive(true);
+        //    StartCoroutine("DesplazarBala");
+        //    res = true;
+        //}
+        //catch (System.Exception ex)
+        //{
+        //    Debug.Log(string.Format("Error en Bala: {0}", ex));
+        //    throw ex;
+        //}
 
         return res;
     }
 
     IEnumerator DesplazarBala()
     {
-        float y = this.goBala.transform.position.y + 0.2f;
-        this.goBala.transform.position.y = y;
+        float y = 0;
         yield return new WaitForSeconds(.5f);
+        y = this.goBala.transform.position.y + 0.2f;
+        this.goBala.transform.position = new Vector3(this.goBala.transform.position.x, y, this.goBala.transform.position.z);
     }
 }

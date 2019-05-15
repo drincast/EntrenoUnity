@@ -39,34 +39,24 @@ public class Bala : MonoBehaviour
         return res;
     }
 
-    public bool Desplazamiento()
+    public bool Desplazar()
     {
         bool res = false;
 
-        this.goBala.SetActive(true);
-        StartCoroutine("DesplazarBala");
-        res = true;
-
-        //try
-        //{
-        //    this.goBala.SetActive(true);
-        //    StartCoroutine("DesplazarBala");
-        //    res = true;
-        //}
-        //catch (System.Exception ex)
-        //{
-        //    Debug.Log(string.Format("Error en Bala: {0}", ex));
-        //    throw ex;
-        //}
+        try
+        {
+            float y = 0;
+            y = this.goBala.transform.position.y + 0.2f;
+            Debug.Log(string.Format("x: {0} - y: {1} - z: {2}", this.goBala.transform.position.x, this.goBala.transform.position.y, this.goBala.transform.position.z));
+            this.goBala.transform.position = new Vector3(this.goBala.transform.position.x, y, this.goBala.transform.position.z);
+            Debug.Log(string.Format("x: {0} - y: {1} - z: {2}", this.goBala.transform.position.x, this.goBala.transform.position.y, this.goBala.transform.position.z));
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(string.Format("Error En Bala - Desplazamiento: {0}", ex));
+            throw;
+        }
 
         return res;
-    }
-
-    IEnumerator DesplazarBala()
-    {
-        float y = 0;
-        yield return new WaitForSeconds(.5f);
-        y = this.goBala.transform.position.y + 0.2f;
-        this.goBala.transform.position = new Vector3(this.goBala.transform.position.x, y, this.goBala.transform.position.z);
     }
 }

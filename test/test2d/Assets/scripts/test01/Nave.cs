@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class Disparo
+class Disparo : MonoBehaviour
 {
     //public GameObject balaIzq;
     //public GameObject balaDer;
@@ -51,6 +51,7 @@ class Disparo
         {
             this.balaIzq = new Bala(new Vector3(posicion.x - 0.401166f, posicion.y + 0.556f, posicion.z));
             this.balaDer = new Bala(new Vector3(posicion.x + 0.401834f, posicion.y + 0.556f, posicion.z));
+
             res = true;
         }
         catch (System.Exception ex)
@@ -67,12 +68,39 @@ class Disparo
         this.CrearBalas(posicion);
     }
 
-    //public GameObject[] ObtenerDisparo()
-    //{
-    //    GameObject[] vec = { this.balaIzq, this.balaDer };
+    public void Desplazar()
+    {
+        try
+        {
+            this.balaDer.Desplazar();
+            this.balaIzq.Desplazar();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(string.Format("Error En disparo - Desplazar: {0}", ex));
+            throw;
+        }
+    }
 
-    //    return vec;
-    //}
+    public bool Finalizar()
+    {
+        bool res = false;
+
+        try
+        {
+            Destroy(this.balaIzq);
+            Destroy(this.balaDer);
+            Debug.Log(string.Format("Destroy balas"));
+            res = true;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(string.Format("Error en Nave (Finalizar): {0}", ex));
+            throw;
+        }
+
+        return res;
+    }
 }
 
 public class Nave : MonoBehaviour
@@ -155,11 +183,11 @@ public class Nave : MonoBehaviour
 
 
 
-    private List<Disparo> lstDisparo = null;
+    private List<Disparo> lstDisparos = null;
 
     public Nave()
     {
-        this.lstDisparo = new List<Disparo>();
+        this.lstDisparos = new List<Disparo>();
     }
 
     public bool MoverNave(float movimiento)
@@ -183,15 +211,20 @@ public class Nave : MonoBehaviour
     public bool Disparar(Vector3 posicion)
     {
         bool res = false;
+        Disparo tempDisparo = null;
 
         try
         {
-            this.CrearDisparo(posicion);            
+            tempDisparo = this.CrearDisparo(posicion);
+            //this.lstDisparos.Add(tempDisparo);
+
+            StartCoroutine("EjecutarDisparo", tempDisparo);
+
             res = true;
         }
         catch (System.Exception ex)
         {
-            Debug.Log(string.Format("Error en Nave: {0}", ex));
+            Debug.Log(string.Format("Error en Nave - Disparar: {0}", ex));
             throw;
         }
 
@@ -233,5 +266,17 @@ public class Nave : MonoBehaviour
         }
 
         return disparo;
+    }
+
+    IEnumerator EjecutarDisparo(Disparo disparo)
+    {
+        for (int i = 0; i < 49; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            disparo.Desplazar();
+            Debug.Log(string.Format("index: {0}", i));
+        }
+
+        disparo.Finalizar();
     }
 }

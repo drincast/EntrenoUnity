@@ -29,7 +29,7 @@ public class ControladorJuego : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                scpNave.Disparar(this.goNaveJugador.transform.position);
+                scpNave.Disparar(this.goNaveJugador.transform.position);                
             }
         }
     }

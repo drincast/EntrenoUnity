@@ -12,7 +12,7 @@ public class Cronometro : MonoBehaviour
     public float distancia;
     public Text txtTiempo;
     public Text txtDistacia;
-
+    public Text txtMsjDistancia;
 
 
     void InicializarObjetos()
@@ -53,6 +53,8 @@ public class Cronometro : MonoBehaviour
         if(this.tiempo <= 0 && this.scpMotorcarretera.finJuego == false)
         {
             this.scpMotorcarretera.finJuego = true;
+            this.scpMotorcarretera.JuegoTerminadoEstados();
+            this.txtMsjDistancia.text = this.txtDistacia.text + " mts";
         }
     }
 }

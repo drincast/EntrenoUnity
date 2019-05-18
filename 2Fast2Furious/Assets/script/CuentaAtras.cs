@@ -60,10 +60,4 @@ public class CuentaAtras : MonoBehaviour
     {
         this.InicializarObjetos();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

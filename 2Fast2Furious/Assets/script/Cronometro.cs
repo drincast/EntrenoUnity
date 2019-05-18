@@ -14,15 +14,14 @@ public class Cronometro : MonoBehaviour
     public Text txtDistacia;
     public Text txtMsjDistancia;
 
-
     void InicializarObjetos()
     {
         this.goMotorCarretera = GameObject.Find("MotorCarretera");
         this.scpMotorcarretera = this.goMotorCarretera.GetComponent<MotorCarretera>();
 
-        this.txtTiempo.text = "0:00";
+        this.txtTiempo.text = "2:00";
         this.txtDistacia.text = "0";
-        this.tiempo = 15;
+        this.tiempo = 120;
     }
 
     void CalcularTiempoDistacia()
@@ -55,6 +54,7 @@ public class Cronometro : MonoBehaviour
             this.scpMotorcarretera.finJuego = true;
             this.scpMotorcarretera.JuegoTerminadoEstados();
             this.txtMsjDistancia.text = this.txtDistacia.text + " mts";
+            this.txtTiempo.text = "0:00";
         }
     }
 }

@@ -123,7 +123,7 @@ public class MotorCarretera : MonoBehaviour
     }
 
     void VelocidadMotorCarretera(){
-        this.velocidad = 5;
+        this.velocidad = 10;
     }
 
     void MedirPantalla(){

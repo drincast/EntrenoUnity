@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bala : MonoBehaviour
+public class BalaA : MonoBehaviour
 {
     public GameObject goBala;
 
-    public Bala(Vector3 posicion)
+    public BalaA(Vector3 posicion)
     {
         this.goBala = new GameObject("bala");
         SpriteRenderer sri = this.goBala.AddComponent<SpriteRenderer>();
@@ -32,7 +32,7 @@ public class Bala : MonoBehaviour
         //}
         //catch (System.Exception ex)
         //{
-        //    Debug.Log(string.Format("Error en Bala: {0}", ex));
+        //    Debug.Log(string.Format("Error en BalaA: {0}", ex));
         //    throw ex;
         //}
 
@@ -53,7 +53,24 @@ public class Bala : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.Log(string.Format("Error En Bala - Desplazamiento: {0}", ex));
+            Debug.Log(string.Format("Error En BalaA - Desplazamiento: {0}", ex));
+            throw;
+        }
+
+        return res;
+    }
+
+    public bool FinalizarBala()
+    {
+        bool res = false;
+
+        try
+        {   
+            Destroy(this.goBala);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(string.Format("Error En BalaA - Desplazamiento: {0}", ex));
             throw;
         }
 

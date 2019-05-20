@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class Disparo : MonoBehaviour
+class Disparo
 {
     //public GameObject balaIzq;
     //public GameObject balaDer;
@@ -37,8 +37,8 @@ class Disparo : MonoBehaviour
     //    return vec;
     //}
 
-    public Bala balaIzq;
-    public Bala balaDer;
+    public BalaA balaIzq;
+    public BalaA balaDer;
 
     //TODO: para crear las balas, por el momento hago referencia a que se disparan dos balas, aqui ya viene el concepto de arma,
     //      esto se debe aque he tomado dos atributos de tipo bala que tienen el concepto de bala izquierda y bala derecha
@@ -49,8 +49,8 @@ class Disparo : MonoBehaviour
 
         try
         {
-            this.balaIzq = new Bala(new Vector3(posicion.x - 0.401166f, posicion.y + 0.556f, posicion.z));
-            this.balaDer = new Bala(new Vector3(posicion.x + 0.401834f, posicion.y + 0.556f, posicion.z));
+            this.balaIzq = new BalaA(new Vector3(posicion.x - 0.401166f, posicion.y + 0.556f, posicion.z));
+            this.balaDer = new BalaA(new Vector3(posicion.x + 0.401834f, posicion.y + 0.556f, posicion.z));
 
             res = true;
         }
@@ -88,8 +88,10 @@ class Disparo : MonoBehaviour
 
         try
         {
-            Destroy(this.balaIzq);
-            Destroy(this.balaDer);
+            //Destroy(this.balaIzq);
+            //Destroy(this.balaDer);
+            this.balaIzq.FinalizarBala();
+            this.balaDer.FinalizarBala();
             Debug.Log(string.Format("Destroy balas"));
             res = true;
         }
@@ -103,7 +105,7 @@ class Disparo : MonoBehaviour
     }
 }
 
-public class Nave : MonoBehaviour
+public class NaveA : MonoBehaviour
 {
     //private List<GameObject[]> lstGoDisparo = null;
 
@@ -185,7 +187,7 @@ public class Nave : MonoBehaviour
 
     private List<Disparo> lstDisparos = null;
 
-    public Nave()
+    public NaveA()
     {
         this.lstDisparos = new List<Disparo>();
     }

@@ -6,6 +6,13 @@ public class MovFondo00 : MonoBehaviour
 {
     public float tamanioYcamara;
 
+    private void ImpInfo(string nombre, GameObject go)
+    {
+        Debug.Log(string.Format("{0}: size.x - {1}, size.y - {2} ", nombre, go.GetComponent<SpriteRenderer>().size.x, go.GetComponent<SpriteRenderer>().size.y));
+        Debug.Log(string.Format("{0}: position - {1} ", nombre, go.GetComponent<SpriteRenderer>().transform.position.ToString()));
+        Debug.Log(string.Format("pixelsPerUnit: {0} ", go.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit));
+    }
+
     public bool Inicializar()
     {
         bool res = true;
@@ -32,28 +39,13 @@ public class MovFondo00 : MonoBehaviour
             if(-this.tamanioYcamara < this.transform.position.y)
             {
                 gameObject.transform.position = new Vector3(0, this.transform.position.y + (direccion * desplazamiento), 0);
-                res = true;
+                Debug.Log(string.Format("position - {0} ", gameObject.GetComponent<SpriteRenderer>().transform.position.ToString()));
             }
             else
             {
+                this.ImpInfo(gameObject.name, gameObject);
                 gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
             }
-
-            return res;
-        }
-        catch (System.Exception ex)
-        {
-            throw ex;
-        }
-    }
-
-    public bool Reiniciar()
-    {
-        bool res = false;
-
-        try
-        {
-            gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
 
             res = true;
             return res;

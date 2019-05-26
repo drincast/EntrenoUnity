@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * La idea con este moviviento de fondo es tener varios sprites en un vector y general el movimiento del fondo
+ */
+
 public class CtrlMov_ : MonoBehaviour
 {
     private short indiceVecFondos;

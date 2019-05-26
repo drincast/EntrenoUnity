@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * La idea de este ejemplo es probar el movimiento mas basico, contar con un sprite de fondo grande, ponerlo a moverse en una dirección llegar a una determinada
+ * posición y reiniciar la posición.
+ * 
+ * Funciona pero se debe tener cuidado con el diseño del sprite del fondo ya que debe tener una simetria en las posiciones de inicio y fin donde
+ * ocurre el reinicio de la posición.
+ * 
+ * uno de los objetivos es: solo debe existir una función update que debe ir en una clase que controle todo.
+ */
+
 public class CtrlMovFondo00 : MonoBehaviour
 {
     private short indiceVecFondos;
@@ -28,32 +38,18 @@ public class CtrlMovFondo00 : MonoBehaviour
         Debug.Log(string.Format("pixelsPerUnit: {0} ", this.goFondos.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit));
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         this.Inicializar();
     }
 
-    // Update is called once per frame
     void Update()
     {        
         if (this.iniciar)
         {
             //Debug.Log(string.Format("this.vecGOFondos.Length: {0} - this.indiceVecFondos: {1}", this.vecGOFondos.Length, this.indiceVecFondos));
             this.goFondos.GetComponent<MovFondo00>().MoverEnY(this.direccionMovY, this.velocidadMov);
-            //if (!this.vecGOFondos[this.indiceVecFondos].GetComponent<MovFondo00>().MoverEnY(this.direccionMovY, this.velocidadMov)) {                
-            //    if (this.vecGOFondos.Length - 1 > this.indiceVecFondos)
-            //    {
-            //        this.indiceVecFondos++;
-            //    }
-            //    else
-            //    {
-            //        this.indiceVecFondos = 0;
-            //    }
-            //}
-
             //this.ImpInfo();
-            //this.iniciar = false;
         }
     }
 }

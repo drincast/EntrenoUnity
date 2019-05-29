@@ -38,6 +38,7 @@ public class MovFondo00 : MonoBehaviour
 
         try
         {
+            //this.ImpInfo(gameObject.name, gameObject);
             //Debug.Log(string.Format("this.tamanioYcamara - {0} < this.transform.position.y - {1}", -(this.tamanioYcamara+margen), this.transform.position.y));
             if (-(this.tamanioYcamara+margen) < this.transform.position.y)
             {
@@ -46,9 +47,11 @@ public class MovFondo00 : MonoBehaviour
             }
             else
             {
+                float posIni = (this.GetComponent<SpriteRenderer>().size.y/2) - (this.tamanioYcamara/2); 
                 this.ImpInfo(gameObject.name, gameObject);
                 //el calculo es aprox (el tamaño de la (spriteY/2)-(la mitad de la camara en y)
-                Debug.Log(string.Format("this.tamanioYcamara - {0}", this.tamanioYcamara));
+                Debug.Log(string.Format("this.tamanioYcamara - {0}, posIni: {1}", this.tamanioYcamara, posIni));
+                //gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
                 gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
             }
 

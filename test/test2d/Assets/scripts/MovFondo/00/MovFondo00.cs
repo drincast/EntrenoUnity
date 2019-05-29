@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovFondo00 : MonoBehaviour
 {
     public float tamanioYcamara;
+    public float margen;
 
     private void ImpInfo(string nombre, GameObject go)
     {
@@ -21,6 +22,7 @@ public class MovFondo00 : MonoBehaviour
         {
             //el calculo del tamaño del eje y de la camara seria el yMax de la camara dividido por pixeles por unidad del sprite
             this.tamanioYcamara = GameObject.Find("Main Camera").GetComponent<Camera>().pixelRect.yMax / this.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+            this.margen = 0f;
             res = true;
             return res;
         }
@@ -36,14 +38,17 @@ public class MovFondo00 : MonoBehaviour
 
         try
         {
-            if(-this.tamanioYcamara < this.transform.position.y)
+            //Debug.Log(string.Format("this.tamanioYcamara - {0} < this.transform.position.y - {1}", -(this.tamanioYcamara+margen), this.transform.position.y));
+            if (-(this.tamanioYcamara+margen) < this.transform.position.y)
             {
                 gameObject.transform.position = new Vector3(0, this.transform.position.y + (direccion * desplazamiento), 0);
-                Debug.Log(string.Format("position - {0} ", gameObject.GetComponent<SpriteRenderer>().transform.position.ToString()));
+                //Debug.Log(string.Format("position - {0} ", gameObject.GetComponent<SpriteRenderer>().transform.position.ToString()));
             }
             else
             {
                 this.ImpInfo(gameObject.name, gameObject);
+                //el calculo es aprox (el tamaño de la (spriteY/2)-(la mitad de la camara en y)
+                Debug.Log(string.Format("this.tamanioYcamara - {0}", this.tamanioYcamara));
                 gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
             }
 

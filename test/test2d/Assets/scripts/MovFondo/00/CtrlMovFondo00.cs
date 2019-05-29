@@ -25,8 +25,8 @@ public class CtrlMovFondo00 : MonoBehaviour
     {
         this.indiceVecFondos = 0;
         this.iniciar = false;
-        this.direccionMovY = -1;        
-        this.goFondos = GameObject.Find("Fondo");
+        this.direccionMovY = -1;
+        this.goFondos = GameObject.Find("Fondo3");
 
         this.ImpInfo();
     }

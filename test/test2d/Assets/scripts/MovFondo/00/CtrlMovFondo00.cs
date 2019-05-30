@@ -26,13 +26,14 @@ public class CtrlMovFondo00 : MonoBehaviour
         this.indiceVecFondos = 0;
         this.iniciar = false;
         this.direccionMovY = -1;
-        this.goFondos = GameObject.Find("Fondo3");
+        this.goFondos = GameObject.Find("Fondo4");
 
         this.ImpInfo();
     }
 
     private void ImpInfo()
     {
+        Debug.Log(string.Format("----------------------- INFO GO: {0}", this.name));
         Debug.Log(string.Format("this.goFondos: size.x - {0}, size.y - {1} ", this.goFondos.GetComponent<SpriteRenderer>().size.x, this.goFondos.GetComponent<SpriteRenderer>().size.y));
         Debug.Log(string.Format("this.goFondos: position - {0} ", this.goFondos.GetComponent<SpriteRenderer>().transform.position.ToString()));
         Debug.Log(string.Format("pixelsPerUnit: {0} ", this.goFondos.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit));
@@ -48,7 +49,7 @@ public class CtrlMovFondo00 : MonoBehaviour
         if (this.iniciar)
         {
             //Debug.Log(string.Format("this.vecGOFondos.Length: {0} - this.indiceVecFondos: {1}", this.vecGOFondos.Length, this.indiceVecFondos));
-            this.goFondos.GetComponent<MovFondo00>().MoverEnY(this.direccionMovY, this.velocidadMov);
+            this.goFondos.GetComponent<MovFondo00>().MoverEnY(this.direccionMovY, (this.velocidadMov));
             //this.ImpInfo();
         }
     }

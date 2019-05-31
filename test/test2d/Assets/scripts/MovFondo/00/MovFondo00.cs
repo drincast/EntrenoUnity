@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovFondo00 : MonoBehaviour
 {
-    public float posContinua;
+    public float posicionReferencia;
     public float tamanioYcamara;
     public float margen;
 
@@ -32,7 +32,7 @@ public class MovFondo00 : MonoBehaviour
             this.ImpInfo(this.name, this.gameObject);
 
             //Este calculo se debe hacer con el sprite completo, el sprite debe tener la misma forma en el cuadro inicial y el final
-            this.posContinua = (this.GetComponent<SpriteRenderer>().size.y/2);
+            this.posicionReferencia = (this.GetComponent<SpriteRenderer>().size.y/2) - (this.tamanioYcamara / 2);
             this.margen = 0f;
             res = true;
             return res;
@@ -51,8 +51,9 @@ public class MovFondo00 : MonoBehaviour
         {
             //this.ImpInfo(gameObject.name, gameObject);
             //Debug.Log(string.Format("this.tamanioYcamara - {0} < this.transform.position.y - {1}", -(this.tamanioYcamara+margen), this.transform.position.y));
-            
-            if (-(this.tamanioYcamara+(this.tamanioYcamara/2)) < this.transform.position.y)
+
+            //if (-(this.tamanioYcamara+(this.tamanioYcamara/2)) < this.transform.position.y)
+            if (-this.posicionReferencia < this.transform.position.y)
             {
                 gameObject.transform.position = new Vector3(0, (this.transform.position.y + (direccion * desplazamiento)), 0);
                 //Debug.Log(string.Format("position - {0} ", gameObject.GetComponent<SpriteRenderer>().transform.position.ToString()));
@@ -64,7 +65,7 @@ public class MovFondo00 : MonoBehaviour
                 //this.ImpInfo(gameObject.name, gameObject);                
                 Debug.Log(string.Format("this.tamanioYcamara - {0}, posIni: {1}", this.tamanioYcamara, posIni));
                 //gameObject.transform.position = new Vector3(0, this.tamanioYcamara, 0);
-                gameObject.transform.position = new Vector3(0, posIni, 0);
+                gameObject.transform.position = new Vector3(0, this.posicionReferencia, 0);
             }
 
             res = true;

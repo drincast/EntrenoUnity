@@ -15,8 +15,8 @@ public class Nave00 : MonoBehaviour
     void Update()
     {
         //Debug.Log(Vector2.right);
-        Debug.Log(Time.deltaTime);
-        this.transform.Translate(1 * Time.deltaTime, 0, 0);
+        //Debug.Log(Time.deltaTime);
+        //this.transform.Translate(1 * Time.deltaTime, 0, 0);
         
     }
 }

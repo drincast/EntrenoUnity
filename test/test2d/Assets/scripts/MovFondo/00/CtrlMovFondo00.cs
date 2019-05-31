@@ -20,13 +20,19 @@ public class CtrlMovFondo00 : MonoBehaviour
     public float direccionMovY;
     public float velocidadMov;
     public GameObject goFondos;
+    public string nombreFondo;
 
     private void Inicializar()
     {
         this.indiceVecFondos = 0;
         this.iniciar = false;
         this.direccionMovY = -1;
-        this.goFondos = GameObject.Find("Fondo4");
+
+        if (!nombreFondo.Equals(""))
+        {
+            this.goFondos = GameObject.Find(this.nombreFondo);
+        }
+        
 
         this.ImpInfo();
     }

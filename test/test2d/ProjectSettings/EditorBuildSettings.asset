@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MovFondo/MovFondo01.unity
+    path: Assets/Scenes/MovFondo/MovFondo01c.unity
     guid: a95a8f1f6eb41c84d93a14e671ada1d8
   m_configObjects: {}

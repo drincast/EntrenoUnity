@@ -61,7 +61,7 @@ public class NaveB : MonoBehaviour
 
     IEnumerator EjecutarDisparo(DisparoB disparo)
     {
-        for (int i = 0; i < 49; i++)
+        for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.1f);
             disparo.Desplazar();

@@ -5,16 +5,25 @@ using UnityEngine;
 public class BalaC : MonoBehaviour
 {
     public GameObject goBala;
+
     public BalaC(Vector3 posicion, int idBala){
+        try
+        {
+            //Debug.Log(string.Format("balaC: {0}", this.gameObject));
 
-        Debug.Log(string.Format("balaC: {0}", this.gameObject));
+            this.goBala = new GameObject(string.Format("bala{0}", idBala.ToString()));
+            SpriteRenderer sri = this.goBala.AddComponent<SpriteRenderer>();
+            sri.sprite = Resources.Load<Sprite>("sprites/bala_14x18");
 
-        this.goBala = new GameObject(string.Format("bala{0}", idBala.ToString()));
-        SpriteRenderer sri = this.goBala.AddComponent<SpriteRenderer>();
-        sri.sprite = Resources.Load<Sprite>("sprites/bala_14x18");
-
-        this.Materializar(posicion);
+            this.Materializar(posicion);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(string.Format("Error en BalaCs: {0}", ex.Message));
+            throw;
+        }
     }
+
     public bool Materializar(Vector3 posicion)
     {
         bool res = false;

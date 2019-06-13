@@ -68,7 +68,7 @@ public class ArmaC : MonoBehaviour
         try
         {
             BalaC goBala = new BalaC(posicion, idBala);
-            res = true;            
+            res = true;
             return res;
         }
         catch (System.Exception ex)

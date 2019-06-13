@@ -8,6 +8,8 @@ public class BalaA : MonoBehaviour
 
     public BalaA(Vector3 posicion)
     {
+        //TODO: usar Instantiate, otra idea es crear los go y agregarlos a la escena
+
         this.goBala = new GameObject("bala");
         SpriteRenderer sri = this.goBala.AddComponent<SpriteRenderer>();
         sri.sprite = Resources.Load<Sprite>("sprites/bala_14x18");

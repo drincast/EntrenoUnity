@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class ArmaC : MonoBehaviour
 {
-    public int numBalas;
+    public float balaMargenPosicionY; //margen de posicionamiento en eje y, para posicionar mejor el inicio de la bala segun el GO de donde sale
+    
+    public GameObject bala; //para instanciar el tipo de bala que usara el arma, instancias desde la escena
+    public int numBalas;  //el número máximo de balas, si es -1 son infinitas
+    public float velocidadBala;
 
     private void InicializarObjetos(){
-        this.numBalas = 0;
+        //this.numBalas = 0;
+        //this.bala = GameObject.Find("goBalaPD01");
+
+        if(this.bala != null){
+            this.bala.SetActive(false);
+        }
+        else{
+            Debug.LogError("No se ha establecido el game objec bala", this);
+        }
     }
 
     // Start is called before the first frame update
@@ -27,13 +39,21 @@ public class ArmaC : MonoBehaviour
 
         try
         {
-            if(this.numBalas > 0){
-                //General disparo;
-                this.CrearDisparo(posicion);
-                this.numBalas--;
+            Vector3 nuevaPosicion = (this.balaMargenPosicionY != 0 ? new Vector3(posicion.x, posicion.y + this.balaMargenPosicionY, posicion.z) : posicion);
+
+            if(this.numBalas == -1){
+                this.CrearDisparo(nuevaPosicion);
             }
-            else{
-                Debug.Log(string.Format("No hay balas: {0}", "cargar arma !!!!!"));                
+            else
+            {
+                if(this.numBalas > 0){
+                    //General disparo;
+                    this.CrearDisparo(nuevaPosicion);
+                    this.numBalas--;
+                }
+                else{
+                    Debug.Log(string.Format("No hay balas: {0}", "cargar arma !!!!!"));                
+                }                
             }
 
             res = true;
@@ -67,7 +87,10 @@ public class ArmaC : MonoBehaviour
 
         try
         {
-            BalaC goBala = new BalaC(posicion, idBala);
+            GameObject goBala = Instantiate(this.bala, posicion, Quaternion.identity);
+            goBala.name = string.Format("goBala{0}", idBala.ToString());
+            BalaC scpBala = goBala.GetComponent<BalaC>();
+            scpBala.Materializar(this.velocidadBala);
             res = true;
             return res;
         }

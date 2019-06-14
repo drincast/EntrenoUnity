@@ -20,8 +20,8 @@ public class DisparoC : MonoBehaviour
 
         try
         {
-            this.balaIzq.Materializar(new Vector3(posicion.x - 0.401166f, posicion.y + 0.556f, posicion.z));
-            this.balaDer.Materializar(new Vector3(posicion.x + 0.401834f, posicion.y + 0.556f, posicion.z));
+            //this.balaIzq.Materializar(new Vector3(posicion.x - 0.401166f, posicion.y + 0.556f, posicion.z));
+            //this.balaDer.Materializar(new Vector3(posicion.x + 0.401834f, posicion.y + 0.556f, posicion.z));
             this.enAccion = true;
             this.indice = indice;
 

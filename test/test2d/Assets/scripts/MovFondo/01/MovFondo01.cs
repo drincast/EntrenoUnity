@@ -35,7 +35,9 @@ public class MovFondo01 : MonoBehaviour
             if(this.esEjeY){
                 //el calculo del tamaño del eje y de la camara seria el yMax de la camara dividido por pixeles por unidad del sprite
                 // this.tamanioYcamara = GameObject.Find("Main Camera").GetComponent<Camera>().pixelRect.yMax / this.gameObject.GetComponent<SpriteRenderer>().sprite. pixelsPerUnit;
-                this.tamanioYcamara = GameObject.Find("Main Camera").GetComponent<Camera>().pixelRect.yMax / 100; //el 100 deberia ser this.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit pero da otro valor, averiguar porque                                
+                this.tamanioYcamara = GameObject.Find("Main Camera").GetComponent<Camera>().pixelRect.yMax / 100; //el 100 deberia ser this.gameObject.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit pero da otro valor, averiguar porque, 
+                //se debe a la compresión definida en unity cuando se configura el sprite su sobre pasa el limite se realiza un calculo
+                //el cual hace que la formula anterior no de el valor correspondiente
 
                 //Este calculo se debe hacer con el sprite completo, el sprite debe tener la misma forma en el cuadro inicial y el final
                 this.posicionReferencia = (this.GetComponent<SpriteRenderer>().size.y / 2) - (this.tamanioYcamara / 2);                

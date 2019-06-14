@@ -6,15 +6,12 @@ public class ControladorJuegoC : MonoBehaviour
 {
     private NaveC scpNave;
 
-    public bool disparoRafaga;
-
     public GameObject goNaveJugador;    
 
     void InicializarObjetos()
     {
         this.goNaveJugador = GameObject.Find("goNaveJugador");
         this.scpNave = this.goNaveJugador.GetComponent<NaveC>();
-        disparoRafaga = false;
     }
 
     // Start is called before the first frame update
@@ -31,21 +28,10 @@ public class ControladorJuegoC : MonoBehaviour
             //this.goNaveJugador.transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * Time.deltaTime);
             this.scpNave.MoverNave(Input.GetAxis("Horizontal"));
 
-            if (!this.disparoRafaga)
+            if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                if (Input.GetKeyDown(KeyCode.LeftControl))
-                {
-                    scpNave.Disparar(this.goNaveJugador.transform.position);                
-                }
+                scpNave.Disparar(this.goNaveJugador.transform.position);                
             }
-            else
-            {
-                if(Input.GetKey(KeyCode.LeftControl))
-                {
-                    scpNave.Disparar(this.goNaveJugador.transform.position);
-                }
-            }
-
         }
     }
 }

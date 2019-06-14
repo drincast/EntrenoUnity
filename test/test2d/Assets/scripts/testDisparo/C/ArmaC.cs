@@ -11,9 +11,6 @@ public class ArmaC : MonoBehaviour
     public float velocidadBala;
 
     private void InicializarObjetos(){
-        //this.numBalas = 0;
-        //this.bala = GameObject.Find("goBalaPD01");
-
         if(this.bala != null){
             this.bala.SetActive(false);
         }
@@ -29,10 +26,10 @@ public class ArmaC : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    // void Update()
+    // {
         
-    }
+    // }
 
     public bool Disparar(Vector3 posicion){
         bool res = false;
@@ -47,7 +44,6 @@ public class ArmaC : MonoBehaviour
             else
             {
                 if(this.numBalas > 0){
-                    //General disparo;
                     this.CrearDisparo(nuevaPosicion);
                     this.numBalas--;
                 }

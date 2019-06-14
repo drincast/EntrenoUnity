@@ -37,26 +37,6 @@ public class NaveC : MonoBehaviour
         try
         {
             this.scpArmaC.Disparar(posicion);
-
-
-            // int indiceDisparo = -1;
-
-            // for (int i = 0; i < this.vecDisparos.Length; i++)
-            // {
-            //     if(this.vecDisparos[i] != null)
-            //     {
-            //         if (this.vecDisparos[i].enAccion == false)
-            //         {
-            //             indiceDisparo = i;
-            //             this.vecDisparos[i].PosicionInicialBalas(posicion, indiceDisparo);
-            //             break;
-            //         }
-            //     }
-            // }
-
-            // if(indiceDisparo > -1)
-            //     StartCoroutine("EjecutarDisparo", this.vecDisparos[indiceDisparo]);
-
             res = true;
         }
         catch (System.Exception ex)
@@ -71,16 +51,4 @@ public class NaveC : MonoBehaviour
     private void Start() {
         this.InicializarObjetos();
     }
-
-    // IEnumerator EjecutarDisparo(DisparoC disparo)
-    // {
-    //     for (int i = 0; i < 100; i++)
-    //     {
-    //         yield return new WaitForSeconds(0.1f);
-    //         disparo.Desplazar();
-    //         //Debug.Log(string.Format("index: {0}", i));
-    //     }
-
-    //     disparo.Finalizar();
-    // }
 }

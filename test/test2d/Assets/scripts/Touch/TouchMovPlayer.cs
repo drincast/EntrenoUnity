@@ -7,11 +7,13 @@ public class TouchMovPlayer : MonoBehaviour
 {
     private Text txtTexto;
     public float velocidad;
+    public CamaraTouch camara;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        this.camara = GameObject.Find("Main Camera").GetComponent<CamaraTouch>();
         this.txtTexto = GameObject.Find("txtTexto").GetComponent<Text>();
         this.velocidad = 1;
     }
@@ -27,6 +29,15 @@ public class TouchMovPlayer : MonoBehaviour
         {
             this.txtTexto.text = string.Format("fingerId: {0} - position: {1} - deltaPosition: {2} - deltaTime: {3} - tapCount: {4} - phase: {5}", 
                 touch.fingerId, touch.position, touch.deltaPosition, touch.deltaTime, touch.tapCount, touch.phase);
+
+            if(this.camara.ancho/2 > touch.position.x)
+            {
+                this.transform.Translate(Vector2.right * (this.velocidad) * Time.deltaTime);
+            }
+            else
+            {
+                this.transform.Translate(Vector2.right * (this.velocidad * -1) * Time.deltaTime);
+            }
         }
         // for (touch : Touch in Input.touches) {
         //     // if (touch.phase == TouchPhase.Began) {

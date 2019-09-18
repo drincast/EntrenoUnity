@@ -10,19 +10,25 @@ public class SampleButton : MonoBehaviour
     public Text priceLabel;
     public Image iconImage;
 
+    private Item item;
+    private ShopScrollList scrollList;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Setup(Item currentItem, ShopScrollList currentScrollList)
     {
-        
-    }
+//        Debug.Log(string.Format("currentItem.itemName: {0}", currentItem.itemName));
 
-    public void Setup(){
-        
+        item = currentItem;
+        Debug.Log(string.Format("currentItem.itemName: {0}", item.itemName));
+        nameLabel.text = currentItem.itemName;
+        priceLabel.text = currentItem.price.ToString();
+        iconImage.sprite = currentItem.icon;
+
+        scrollList = currentScrollList;
     }
 }

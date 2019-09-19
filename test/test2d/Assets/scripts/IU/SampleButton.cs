@@ -16,7 +16,7 @@ public class SampleButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        button.onClick.AddListener(HandleClick);
     }
 
     public void Setup(Item currentItem, ShopScrollList currentScrollList)
@@ -24,11 +24,16 @@ public class SampleButton : MonoBehaviour
 //        Debug.Log(string.Format("currentItem.itemName: {0}", currentItem.itemName));
 
         item = currentItem;
-        Debug.Log(string.Format("currentItem.itemName: {0}", item.itemName));
+        //Debug.Log(string.Format("currentItem.itemName: {0}", item.itemName));
         nameLabel.text = currentItem.itemName;
         priceLabel.text = currentItem.price.ToString();
         iconImage.sprite = currentItem.icon;
 
         scrollList = currentScrollList;
+    }
+
+    public void HandleClick()
+    {
+        scrollList.TryTransferItemToOtherShop(item);
     }
 }
